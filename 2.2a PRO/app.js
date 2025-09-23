@@ -1,3 +1,24 @@
+const titleProject = 'Оценка стоимости'; // String
+console.log(titleProject); // название проекта
+const screensValue = 'шаблонные, с уникальным дизайном, с анимациями'; // String
+console.log(screensValue); // строка с названиями типов экранов через запятую
+screenPrice = 5000; // Number
+console.log(screenPrice); // цена реализации одного экрана
+const percentage = 30; // Number
+console.log(percentage + '%'); // процент отката подрядчику
+const fullPrice = screenPrice + (screenPrice / 100) * percentage; // Number
+console.log(fullPrice + ' руб'); // желаемая сумма зарaботка с проекта
+isresponsive = true; // Boolean
+console.log(isresponsive); // адаптивность
+
+
+
+
+
+
+
+
+
 // Number
 // String
 // Boolean
