@@ -1,4 +1,4 @@
-let screenPrice = 10000;
+let screenPrice;
 let percentage = 10;
 let allServicePrices;
 let newTitle = "";
@@ -15,11 +15,23 @@ const checkIsNumber = function (x) {
 };
 
 const asking = function () {
-  titleProject = prompt("Название проекта?");
+  titleProject = prompt("Название проекта?", "КальКулЯтор");
   screensValue = prompt(
-    "Укажите типы экранов (например: шаблонные, с уникальным дизайном, с анимациями)"
+    "шаблонные, с уникальным дизайном, с анимациями",
+    "с анимациями"
   );
-  responsive = confirm("Нужен ли респонсивный сайт?"); // confirm возвращает true или false
+  screenPrice = prompt("Сколько это будет стоить?", 12000);
+
+  while (
+    !checkIsNumber(screenPrice) ||
+    screenPrice.trim() === "" ||
+    screenPrice === null
+  ) {
+    screenPrice = prompt("Сколько это будет стоить?", 12000);
+  }
+  screenPrice = Number(screenPrice);
+
+  responsive = prompt("Нужен ли респонсив на сайте?", "нужен");
 };
 
 const getAllServicePrices = function () {
@@ -62,19 +74,19 @@ const getTitle = function () {
 
 // Рассчет скидок
 
-function getRollbackMessage(price) {
+const getPercentageMessage = function (price) {
   if (price > 50000) {
-    console.log("Сделаем скидку 10%");
+    return "Сделаем скидку 10%";
   } else if (price > 20000 && price <= 50000) {
-    console.log("Сделаем скидку 5%");
+    return "Сделаем скидку 5%";
   } else if (price > 0 && price <= 20000) {
-    console.log("Скидка не предусмотрена");
+    return "Скидка не предусмотрена";
   } else if (price === 0) {
-    console.log("Цена равна нулю. Проверьте данные.");
+    return "Цена равна нулю. Проверьте данные.";
   } else {
-    console.log("Что-то пошло не так");
+    return "Что-то пошло не так";
   }
-}
+};
 
 asking();
 allServicePrices = getAllServicePrices();
@@ -82,14 +94,8 @@ fullPrice = getFullPrice();
 servicePercentPrice = getServicePercentPrices();
 newTitle = getTitle();
 
-console.log(titleProject);
-console.log(screensValue);
-console.log(responsive);
-console.log(service1);
-console.log(service2);
-console.log(
-  Math.ceil(servicePercentPrice),
-  "Итоговая сумма проекта за вычетом % подрядчику"
-);
-
-getRollbackMessage(fullPrice); // вызов функции для расчета скидки по полной стоимости проекта
+console.log(newTitle);
+console.log(allServicePrices);
+console.log(fullPrice);
+console.log(Math.ceil(servicePercentPrice));
+console.log(getPercentageMessage(fullPrice));
