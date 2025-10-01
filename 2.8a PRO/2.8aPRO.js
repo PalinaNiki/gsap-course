@@ -1,10 +1,15 @@
-"use strict";
+const tabMenu = document.querySelectorAll(".tab-link");
+const tabContent = document.querySelectorAll(".tab-pane");
+const tabNum = document.querySelectorAll(".tab-num");
 
-console.log(document);
+console.log(tabMenu);
+console.log(tabContent);
 
-const heading = document.querySelector(".h1"); // поиск по тегу
-
-heading.addEventListener("click", () => {
-  console.log("clicked");
-  heading.classList.toggle("is--active");
+tabMenu.forEach((tabLink, index) => {
+  tabLink.addEventListener("click", () => {
+    tabContent.forEach((tabItem) => {
+      tabItem.classList.remove("active");
+    });
+    tabContent[index].classList.add("active");
+  });
 });
